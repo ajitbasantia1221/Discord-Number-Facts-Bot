@@ -2,10 +2,26 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 import replyFact from './replyFact.js';
-
+import express from 'express';
 
 //Dotenv will load the environment variable stored.
 dotenv.config();
+
+// Create an Express app
+const app = express();
+
+// Set up a route for the root URL
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+});
+
+// Get the port from the environment variable or use port 3000 by default
+const PORT = process.env.PORT || 3000;
+
+// Start the Express server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 //GUILD -> SERVER will activate the BOT and we can see it will be available.
 const client = new Client({
