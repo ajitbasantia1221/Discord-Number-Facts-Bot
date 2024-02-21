@@ -70,6 +70,7 @@ client.on('ready', () => {
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
+    if (interaction.replied) return;
     const { commandName, options } = interaction;
     const number = options.getNumber('number');
     if (commandName === 'fact') {
